@@ -1,0 +1,3 @@
+br\edu\ifsp\cbtswe\dao\BookDAO.class
+br\edu\ifsp\cbtswe\model\Book.class
+br\edu\ifsp\cbtswe\servlet\BookServlet.class
