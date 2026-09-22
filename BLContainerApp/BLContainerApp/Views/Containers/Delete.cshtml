@@ -1,0 +1,31 @@
+@model Container
+
+@{
+    ViewData["Title"] = "Excluir Container";
+}
+
+<h1>Excluir Container</h1>
+
+<h3 class="text-danger">Tem certeza que deseja excluir este container?</h3>
+
+<div class="col-md-6">
+    <dl class="row">
+        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Numero)</dt>
+        <dd class="col-sm-8">@Html.DisplayFor(model => model.Numero)</dd>
+
+        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Tipo)</dt>
+        <dd class="col-sm-8">@Model.Tipo</dd>
+
+        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Tamanho)</dt>
+        <dd class="col-sm-8">@((int)Model.Tamanho) pés</dd>
+
+        <dt class="col-sm-4">BL</dt>
+        <dd class="col-sm-8">@Model.BL?.Numero</dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Excluir</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

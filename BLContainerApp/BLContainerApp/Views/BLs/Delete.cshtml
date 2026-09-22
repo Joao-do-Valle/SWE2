@@ -1,0 +1,38 @@
+@model BL
+
+@{
+    ViewData["Title"] = "Excluir BL";
+}
+
+<h1>Excluir BL</h1>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        @Html.ValidationSummary()
+    </div>
+}
+
+<h3 class="text-danger">Tem certeza que deseja excluir este BL?</h3>
+
+<div class="col-md-6">
+    <dl class="row">
+        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Numero)</dt>
+        <dd class="col-sm-8">@Html.DisplayFor(model => model.Numero)</dd>
+
+        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Consignee)</dt>
+        <dd class="col-sm-8">@Html.DisplayFor(model => model.Consignee)</dd>
+
+        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Navio)</dt>
+        <dd class="col-sm-8">@Html.DisplayFor(model => model.Navio)</dd>
+
+        <dt class="col-sm-4">Containers associados</dt>
+        <dd class="col-sm-8">@Model.Containers.Count</dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Excluir</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

@@ -1,0 +1,39 @@
+@{
+    ViewData["Title"] = "Início";
+}
+
+<div class="text-center mb-4">
+    <h1 class="display-6">Sistema de Gestão de BL e Containers</h1>
+    <p class="lead">Trabalho Prático 02 - CBTSWE2 (ADS 671) - ASP.NET MVC</p>
+    <p class="text-muted">Dupla: João do Valle Seixas Paula e André Luiz Nascimento de Andrade</p>
+</div>
+
+<div class="row g-3">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">BLs</h5>
+                <p class="card-text">Cadastre, edite, consulte e exclua os Bills of Lading (BL).</p>
+                <a asp-controller="BLs" asp-action="Index" class="btn btn-primary">Acessar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Containers</h5>
+                <p class="card-text">Cadastre containers, sempre associados a um BL.</p>
+                <a asp-controller="Containers" asp-action="Index" class="btn btn-primary">Acessar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Relatório</h5>
+                <p class="card-text">Visualize a lista de BL/Container em formato de relatório.</p>
+                <a asp-controller="Relatorio" asp-action="Index" class="btn btn-primary">Acessar</a>
+            </div>
+        </div>
+    </div>
+</div>
