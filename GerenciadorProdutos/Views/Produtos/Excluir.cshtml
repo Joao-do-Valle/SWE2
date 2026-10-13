@@ -1,0 +1,29 @@
+@model Produto
+@{
+    ViewData["Title"] = "Excluir produto";
+}
+
+<h1 class="titulo-pagina">Excluir produto</h1>
+
+<div class="alert alert-warning">
+    Esta ação não pode ser desfeita. Confirme se deseja excluir o produto abaixo.
+</div>
+
+<dl class="detalhes">
+    <dt>Nome</dt>
+    <dd>@Model.Nome</dd>
+
+    <dt>Descrição</dt>
+    <dd>@Model.Descricao</dd>
+
+    <dt>Preço</dt>
+    <dd class="numero">@Model.Preco.ToString("C2")</dd>
+
+    <dt>Quantidade em estoque</dt>
+    <dd class="numero">@Model.QuantidadeEstoque</dd>
+</dl>
+
+<form asp-action="Excluir" asp-route-id="@Model.Id" class="d-flex gap-2">
+    <button type="submit" class="btn btn-danger">Excluir produto</button>
+    <a class="btn btn-outline-secondary" asp-action="Index">Cancelar</a>
+</form>

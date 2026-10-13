@@ -1,0 +1,38 @@
+@model Produto
+@{
+    ViewData["Title"] = Model.Nome;
+}
+
+<h1 class="titulo-pagina">@Model.Nome</h1>
+
+<dl class="detalhes">
+    <dt>Descrição</dt>
+    <dd>@Model.Descricao</dd>
+
+    <dt>Preço</dt>
+    <dd class="numero">@Model.Preco.ToString("C2")</dd>
+
+    <dt>Quantidade em estoque</dt>
+    <dd class="numero">
+        @if (Model.QuantidadeEstoque == 0)
+        {
+            <span class="selo selo-esgotado">Esgotado</span>
+        }
+        else
+        {
+            @Model.QuantidadeEstoque
+        }
+    </dd>
+
+    <dt>Valor total em estoque</dt>
+    <dd class="numero">@((Model.Preco * Model.QuantidadeEstoque).ToString("C2"))</dd>
+
+    <dt>Código</dt>
+    <dd class="numero">@Model.Id</dd>
+</dl>
+
+<div class="d-flex gap-2">
+    <a class="btn btn-primary" asp-action="Editar" asp-route-id="@Model.Id">Editar</a>
+    <a class="btn btn-outline-danger" asp-action="Excluir" asp-route-id="@Model.Id">Excluir</a>
+    <a class="btn btn-outline-secondary" asp-action="Index">Voltar para a lista</a>
+</div>

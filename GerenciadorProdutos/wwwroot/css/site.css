@@ -1,0 +1,189 @@
+/* Trabalho Prático 03 - CBTSWE2
+   Dupla: André Luiz Nascimento de Andrade e João do Valle Seixas Paula */
+
+:root {
+    --tinta: #1b2a41;
+    --fundo: #eef1f5;
+    --papel: #ffffff;
+    --acento: #0e6b8c;
+    --acento-escuro: #0a5671;
+    --linha: #d5dbe3;
+    --texto-suave: #5b6778;
+    --alerta: #9a5b00;
+    --alerta-fundo: #fdf0d5;
+    --perigo: #a4262c;
+    --perigo-fundo: #fbe3e4;
+
+    --bs-primary: var(--acento);
+    --bs-primary-rgb: 14, 107, 140;
+    --bs-link-color: var(--acento);
+    --bs-link-hover-color: var(--acento-escuro);
+}
+
+body {
+    font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: var(--fundo);
+    color: var(--tinta);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-primary {
+    --bs-btn-bg: var(--acento);
+    --bs-btn-border-color: var(--acento);
+    --bs-btn-hover-bg: var(--acento-escuro);
+    --bs-btn-hover-border-color: var(--acento-escuro);
+    --bs-btn-active-bg: var(--acento-escuro);
+    --bs-btn-active-border-color: var(--acento-escuro);
+}
+
+.btn-outline-primary {
+    --bs-btn-color: var(--acento);
+    --bs-btn-border-color: var(--acento);
+    --bs-btn-hover-bg: var(--acento);
+    --bs-btn-hover-border-color: var(--acento);
+    --bs-btn-active-bg: var(--acento-escuro);
+}
+
+:focus-visible {
+    outline: 3px solid #f2a900;
+    outline-offset: 2px;
+}
+
+.topo {
+    background: var(--tinta);
+    padding: 0.9rem 0;
+}
+
+.marca {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+}
+
+.marca:hover { color: #fff; }
+
+.conteudo {
+    flex: 1;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+.titulo-pagina {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+}
+
+/* Resumo da lista: o dado mais importante da página inicial */
+.resumo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 2px solid var(--tinta);
+}
+
+.resumo dt {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--texto-suave);
+}
+
+.resumo dd {
+    margin: 0;
+    font-size: 1.9rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+.tabela {
+    --bs-table-bg: var(--papel);
+    background: var(--papel);
+    border: 1px solid var(--linha);
+}
+
+.tabela thead th {
+    background: #e4e9f0;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--linha);
+    white-space: nowrap;
+}
+
+.tabela .descricao {
+    color: var(--texto-suave);
+    max-width: 26rem;
+}
+
+.tabela .acoes { white-space: nowrap; }
+
+.numero { font-variant-numeric: tabular-nums; }
+
+.link-produto {
+    color: var(--tinta);
+    text-decoration: none;
+}
+
+.link-produto:hover {
+    color: var(--acento);
+    text-decoration: underline;
+}
+
+.selo {
+    display: inline-block;
+    padding: 0.15rem 0.55rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.selo-baixo { background: var(--alerta-fundo); color: var(--alerta); }
+.selo-esgotado { background: var(--perigo-fundo); color: var(--perigo); }
+
+.vazio {
+    background: var(--papel);
+    border: 1px dashed var(--linha);
+    padding: 2.5rem 1rem;
+    text-align: center;
+}
+
+.formulario,
+.detalhes {
+    background: var(--papel);
+    border: 1px solid var(--linha);
+    padding: 1.75rem;
+    margin-bottom: 1.25rem;
+    max-width: 40rem;
+}
+
+.detalhes dt {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--texto-suave);
+}
+
+.detalhes dd {
+    font-size: 1.1rem;
+    margin-bottom: 1.1rem;
+}
+
+.detalhes dd:last-child { margin-bottom: 0; }
+
+.rodape {
+    background: var(--papel);
+    border-top: 1px solid var(--linha);
+    padding: 1rem 0;
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+}
+
+@media (max-width: 576px) {
+    .resumo { gap: 1.25rem; }
+    .titulo-pagina { font-size: 1.6rem; }
+    .formulario, .detalhes { padding: 1.1rem; }
+}

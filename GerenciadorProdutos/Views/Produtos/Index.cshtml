@@ -1,0 +1,85 @@
+@model IEnumerable<Produto>
+@{
+    ViewData["Title"] = "Produtos";
+    var busca = ViewData["Busca"] as string;
+    var totalProdutos = Model.Count();
+    var totalUnidades = Model.Sum(p => p.QuantidadeEstoque);
+    var valorEstoque = Model.Sum(p => p.Preco * p.QuantidadeEstoque);
+}
+
+<div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-4">
+    <h1 class="titulo-pagina mb-0">Produtos</h1>
+    <form method="get" asp-action="Index" class="d-flex gap-2" role="search">
+        <input type="search" name="busca" value="@busca" class="form-control" placeholder="Buscar por nome" aria-label="Buscar por nome" />
+        <button type="submit" class="btn btn-outline-primary">Buscar</button>
+    </form>
+</div>
+
+<dl class="resumo">
+    <div><dt>Produtos</dt><dd>@totalProdutos</dd></div>
+    <div><dt>Unidades em estoque</dt><dd>@totalUnidades.ToString("N0")</dd></div>
+    <div><dt>Valor em estoque</dt><dd>@valorEstoque.ToString("C2")</dd></div>
+</dl>
+
+@if (!Model.Any())
+{
+    <div class="vazio">
+        @if (string.IsNullOrWhiteSpace(busca))
+        {
+            <p>Nenhum produto cadastrado ainda.</p>
+            <a class="btn btn-primary" asp-action="Criar">Cadastrar o primeiro produto</a>
+        }
+        else
+        {
+            <p>Nenhum produto encontrado para "@busca".</p>
+            <a class="btn btn-outline-primary" asp-action="Index">Limpar busca</a>
+        }
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table tabela align-middle">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.Nome)</th>
+                    <th>@Html.DisplayNameFor(m => m.Descricao)</th>
+                    <th class="text-end">@Html.DisplayNameFor(m => m.Preco)</th>
+                    <th class="text-end">Estoque</th>
+                    <th><span class="visually-hidden">Ações</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="fw-medium">
+                            <a class="link-produto" asp-action="Detalhes" asp-route-id="@item.Id">@item.Nome</a>
+                        </td>
+                        <td class="descricao">@item.Descricao</td>
+                        <td class="text-end numero">@item.Preco.ToString("C2")</td>
+                        <td class="text-end numero">
+                            @if (item.QuantidadeEstoque == 0)
+                            {
+                                <span class="selo selo-esgotado">Esgotado</span>
+                            }
+                            else if (item.QuantidadeEstoque <= 5)
+                            {
+                                <span class="selo selo-baixo">@item.QuantidadeEstoque (baixo)</span>
+                            }
+                            else
+                            {
+                                @item.QuantidadeEstoque
+                            }
+                        </td>
+                        <td class="text-end acoes">
+                            <a class="btn btn-sm btn-outline-secondary" asp-action="Detalhes" asp-route-id="@item.Id">Detalhes</a>
+                            <a class="btn btn-sm btn-outline-primary" asp-action="Editar" asp-route-id="@item.Id">Editar</a>
+                            <a class="btn btn-sm btn-outline-danger" asp-action="Excluir" asp-route-id="@item.Id">Excluir</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

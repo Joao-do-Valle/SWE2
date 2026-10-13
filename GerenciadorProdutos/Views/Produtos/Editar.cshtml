@@ -1,0 +1,19 @@
+@model Produto
+@{
+    ViewData["Title"] = "Editar produto";
+}
+
+<h1 class="titulo-pagina">Editar produto</h1>
+
+<form asp-action="Editar" asp-route-id="@Model.Id" class="formulario" novalidate>
+    <input type="hidden" asp-for="Id" />
+    <partial name="_Formulario" model="Model" />
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary">Salvar alterações</button>
+        <a class="btn btn-outline-secondary" asp-action="Index">Cancelar</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
