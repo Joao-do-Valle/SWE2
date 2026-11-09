@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Acervo de Livros</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topo">
+    <h1>Acervo de Livros</h1>
+    <p>Cadastre, consulte, edite e remova livros da biblioteca.</p>
+  </header>
+
+  <main class="layout">
+    <section class="painel" aria-labelledby="titulo-form">
+      <h2 id="titulo-form">Novo livro</h2>
+
+      <form id="form-livro" novalidate>
+        <input type="hidden" id="livro-id">
+
+        <label for="titulo">Título</label>
+        <input id="titulo" type="text" maxlength="150" required>
+
+        <label for="autor">Autor</label>
+        <input id="autor" type="text" maxlength="100" required>
+
+        <label for="isbn">ISBN (10 ou 13 dígitos)</label>
+        <input id="isbn" type="text" placeholder="978-0-13-235088-4" required>
+
+        <div class="duas-colunas">
+          <div>
+            <label for="ano">Ano de publicação</label>
+            <input id="ano" type="number" min="1000" max="2100" required>
+          </div>
+          <div>
+            <label for="paginas">Páginas</label>
+            <input id="paginas" type="number" min="1" max="10000" required>
+          </div>
+        </div>
+
+        <p id="erro-form" class="erro" role="alert" hidden></p>
+
+        <div class="acoes">
+          <button type="submit" id="btn-salvar" class="primario">Cadastrar livro</button>
+          <button type="button" id="btn-cancelar" class="secundario" hidden>Cancelar edição</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="painel" aria-labelledby="titulo-lista">
+      <div class="cabecalho-lista">
+        <h2 id="titulo-lista">Livros cadastrados <span id="contador" class="contador">0</span></h2>
+        <input id="busca" type="search" placeholder="Buscar por título ou autor" aria-label="Buscar livros">
+      </div>
+
+      <div class="tabela-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Autor</th>
+              <th>ISBN</th>
+              <th>Ano</th>
+              <th>Leitura</th>
+              <th><span class="sr-only">Ações</span></th>
+            </tr>
+          </thead>
+          <tbody id="corpo-tabela"></tbody>
+        </table>
+      </div>
+
+      <p id="vazio" class="vazio" hidden>Nenhum livro encontrado. Use o formulário para cadastrar o primeiro.</p>
+    </section>
+  </main>
+
+  <div id="aviso" class="aviso" role="status" aria-live="polite" hidden></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
